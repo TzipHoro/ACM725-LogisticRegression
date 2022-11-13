@@ -1,46 +1,32 @@
-\documentclass[letterpaper,man,natbib]{apa6}
+\documentclass[letterpaper,man,natbib,donotrepeattitle]{apa6}
 \include{preamble}
 
+\fancyhead{}
 \pagenumbering{gobble}
 
-%
 %%Below is what you can edit
-\title{}  % TODO
-\shorttitle{}
+\title{title}  % TODO
+
 \author{Tziporah Horowitz}
 \affiliation{Johns Hopkins University}
 
 \abstract{Your abstract here.}  % TODO
 
-\begin{document}
-%\maketitle
 
+\begin{document}
+\maketitle
 
 \section{Introduction}\label{sec:introduction}
 
 \pagebreak
 
 \section{Methods}\label{sec:methods}
+\input{methods}
 
-\begin{minipage}{.9\linewidth}
- \include{subdistr-plot}
- \captionof{figure}{Distributions of Features}
-\end{minipage}
-
-
-\subsection{This is a Subsection}\label{subsec:this-is-a-subsection}
-% \cite{Marginal-Effects—Quantifying-the-Effect-of-Changes-in-Risk-Factors-in-Logistic-Regression-Models}
-% \cite{Relative-Measures-of-Association-for-Binary-Outcomes:-Challenges-and-Recommendations-for-the-Global-Health-Researcher-ue}
-% \cite{Log-Odds-and-the-Interpretation-of-Logit-Models}
-% \cite{Statistical-hypothesis-testing}
-% \cite{An-Introduction-to-Logistic-Regression-Analysis-and-Reporting}
-% \cite{Problems-with-Using-Odds-Ratios-as-Effect-Sizes-in-Binary-Logistic-Regression-and-Alternative-Approaches}
-% \cite{Using-Logistic-Regression-Model-to-Study-the-Most-Important-Factors-Which-Affects-Diabetes-for-The-Elderly-in-The-City-of-Hilla}
-
-
-\pagebreak
+\section{Results}\label{sec:results}
 
 \bibliography{main}
+\bibliographystyle{apa6}
 
 \end{document}
 
