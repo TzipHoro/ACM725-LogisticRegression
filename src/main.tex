@@ -1,47 +1,36 @@
-\documentclass[letterpaper,man,natbib]{apa6}
+\documentclass[letterpaper,man,natbib,donotrepeattitle]{apa6}
+\include{preamble}
 
-\usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
-\usepackage{amsmath}
-\usepackage{graphicx}
-
-\usepackage{url}
-\def\UrlBreaks{\do\/\do-}
-\usepackage{breakurl}
-
+\fancyhead{}
 \pagenumbering{gobble}
 
-%
 %%Below is what you can edit
-%\title{Your APA6-Style Manuscript}  % TODO
-\shorttitle{}
-%\author{Tziporah Horowitz}
-%\affiliation{Johns Hopkins University}
-%
+\title{title}  % TODO
+
+\author{Tziporah Horowitz}
+\affiliation{Johns Hopkins University}
+
 %\abstract{Your abstract here.}  % TODO
-%
+
+
 \begin{document}
-%\maketitle
+\maketitle
 
-
-\section{Introduction}\label{sec:introduction}
+%\section{Introduction}\label{sec:introduction}
 
 
 \section{Methods}\label{sec:methods}
+\input{methods}
 
-\subsection{This is a Subsection}\label{subsec:this-is-a-subsection}
-\cite{Marginal-Effects—Quantifying-the-Effect-of-Changes-in-Risk-Factors-in-Logistic-Regression-Models}
-\cite{Relative-Measures-of-Association-for-Binary-Outcomes:-Challenges-and-Recommendations-for-the-Global-Health-Researcher-ue}
-\cite{Log-Odds-and-the-Interpretation-of-Logit-Models}
-\cite{Statistical-hypothesis-testing}
-\cite{An-Introduction-to-Logistic-Regression-Analysis-and-Reporting}
-\cite{Problems-with-Using-Odds-Ratios-as-Effect-Sizes-in-Binary-Logistic-Regression-and-Alternative-Approaches}
-\cite{Using-Logistic-Regression-Model-to-Study-the-Most-Important-Factors-Which-Affects-Diabetes-for-The-Elderly-in-The-City-of-Hilla}
-
-
-\pagebreak
+%\section{Results}\label{sec:results}
 
 \bibliography{main}
+\bibliographystyle{apa6}
+
+\appendix
+\section{}\label{sec:appendix}
+\lstinputlisting[language=Python,label={lst:summary}]{../data_summary.py}
+%\lstinputlisting[language=Python,label={lst:analysis}]{../data_modelling.py}
 
 \end{document}
 
