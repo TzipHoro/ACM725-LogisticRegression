@@ -3,12 +3,14 @@
         \hline & {\text{ Diseased }} & {\text{ Healthy }} \\
         \hline {\text{ Exposed }} & $D_E$ & $H_E$ \\
         {\text{ Unexposed }} & $D_U$ & $H_U$ \\ \hline
-    \end{tabular}\caption{Contingency Matrix}\label{table:contingency}
+    \end{tabular}
+    \makeatletter\def\@captype{table}\makeatother
+    \caption{Contingency Matrix}\label{table:contingency}
 \end{wrapfigure}
 
 There are several ways to measure the association between a risk factor and the binary outcome of contracting a disease.
 The following sections discuss the four approaches used in this analysis to determine the associated risk of various factors in the context of patients contracting heart disease.
-Sections 1--3 refer to figure~\ref{table:contingency} for simplification.
+Sections 1--3 refer to table~\ref{table:contingency} for simplification.
 
 \begin{figure}[b]
 \includegraphics[width=\textwidth]{plots/Screenshot 2022-11-08 205742}

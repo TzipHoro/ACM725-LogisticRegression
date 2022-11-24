@@ -28,10 +28,25 @@
 \bibliography{main}
 \bibliographystyle{apa6}
 
+\clearpage
+
 \appendix
-\section{}\label{sec:appendix}
+\renewcommand{\thesection}{\Alph{section}}
+
+\section{Code}\label{sec:code}
+
+\subsection{1. data\_summary.py}\label{subsec:data_summary.py}
 \lstinputlisting[language=Python,label={lst:summary}]{../data_summary.py}
-%\lstinputlisting[language=Python,label={lst:analysis}]{../data_modelling.py}
+
+\clearpage
+
+\subsection{2. associated\_risk.py}\label{subsec:associated_risk.py}
+\lstinputlisting[language=Python,label={lst:risk}]{../associated_risk.py}
+
+\clearpage
+
+\subsection{3. models.py}\label{subsec:models.py}
+\lstinputlisting[language=Python,label={lst:analysis}]{../models.py}
 
 \end{document}
 

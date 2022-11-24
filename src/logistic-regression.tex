@@ -1,0 +1,35 @@
+\def\arraystretch{0.7}
+\begin{array}{l}
+    \toprule
+    \begin{tabular*}{\textwidth}{lr @{\extracolsep{\fill}} lr}
+        \textbf{Dep. Variable:}   &      target      & \textbf{  No. Observations:  } &      615    \\
+        \textbf{Model:}           &      Logit       & \textbf{  Df Residuals:      } &      602    \\
+        \textbf{Method:}          &       MLE        & \textbf{  Df Model:          } &       12    \\
+        \textbf{Date:}            & Thu, 24 Nov 2022 & \textbf{  Pseudo R-squ.:     } &   0.5058    \\
+        \textbf{Time:}            &     15:10:58     & \textbf{  Log-Likelihood:    } &   -210.48   \\
+        \textbf{converged:}       &       True       & \textbf{  LL-Null:           } &   -425.93   \\
+        \textbf{Covariance Type:} &    nonrobust     & \textbf{  LLR p-value:       } & 1.073e-84   \\
+    \end{tabular*} \\
+    \bottomrule
+
+    \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} rrrrrr}
+          & \textbf{coef} & \textbf{std err} & \textbf{z} & \textbf{P$> |$z$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+        \midrule
+        \textbf{age}      &       0.0272  &        0.014     &     1.983  &         0.047        &        0.000    &        0.054     \\
+        \textbf{sex}      &      -1.9158  &        0.335     &    -5.712  &         0.000        &       -2.573    &       -1.258     \\
+        \textbf{cp}       &       0.8560  &        0.128     &     6.698  &         0.000        &        0.606    &        1.107     \\
+        \textbf{trestbps} &      -0.0114  &        0.007     &    -1.613  &         0.107        &       -0.025    &        0.002     \\
+        \textbf{chol}     &      -0.0124  &        0.003     &    -3.859  &         0.000        &       -0.019    &       -0.006     \\
+        \textbf{fbs}      &      -0.3403  &        0.373     &    -0.912  &         0.362        &       -1.072    &        0.391     \\
+        \textbf{restecg}  &       0.3310  &        0.247     &     1.342  &         0.180        &       -0.153    &        0.814     \\
+        \textbf{thalach}  &       0.0390  &        0.006     &     6.062  &         0.000        &        0.026    &        0.052     \\
+        \textbf{exang}    &      -0.6096  &        0.285     &    -2.142  &         0.032        &       -1.167    &       -0.052     \\
+        \textbf{oldpeak}  &      -0.7124  &        0.154     &    -4.629  &         0.000        &       -1.014    &       -0.411     \\
+        \textbf{slope}    &       0.6537  &        0.242     &     2.697  &         0.007        &        0.179    &        1.129     \\
+        \textbf{ca}       &      -0.7788  &        0.131     &    -5.936  &         0.000        &       -1.036    &       -0.522     \\
+        \textbf{thal}     &      -0.8299  &        0.200     &    -4.142  &         0.000        &       -1.223    &       -0.437     \\
+    \end{tabular*} \\
+    \bottomrule
+    \end{array}\label{tab:table2}
+%\caption{Logit Regression Results}
+%\end{float}

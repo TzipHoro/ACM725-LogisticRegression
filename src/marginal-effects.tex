@@ -1,0 +1,31 @@
+\def\arraystretch{0.7}
+\begin{array}{l}
+    \toprule
+    \begin{tabular}{lc}
+        \textbf{Dep. Variable:} &     target      \\
+        \textbf{Method:}        &      dydx       \\
+        \textbf{At:}            &    overall      \\
+    \end{tabular} \\
+    \bottomrule
+
+    \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} rrrrrr}
+        \textbf{}     & \textbf{dy/dx} & \textbf{std err} & \textbf{z} & \textbf{P$> |$z$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+
+        \midrule
+        \bottomrule
+        \textbf{age}      &       0.0029   &        0.001     &     2.007  &         0.045        &     6.93e-05    &        0.006     \\
+        \textbf{sex}      &      -0.2070   &        0.033     &    -6.267  &         0.000        &       -0.272    &       -0.142     \\
+        \textbf{cp}       &       0.0925   &        0.012     &     7.823  &         0.000        &        0.069    &        0.116     \\
+        \textbf{trestbps} &      -0.0012   &        0.001     &    -1.621  &         0.105        &       -0.003    &        0.000     \\
+        \textbf{chol}     &      -0.0013   &        0.000     &    -4.038  &         0.000        &       -0.002    &       -0.001     \\
+        \textbf{fbs}      &      -0.0368   &        0.040     &    -0.914  &         0.361        &       -0.116    &        0.042     \\
+        \textbf{restecg}  &       0.0358   &        0.027     &     1.348  &         0.178        &       -0.016    &        0.088     \\
+        \textbf{thalach}  &       0.0042   &        0.001     &     6.782  &         0.000        &        0.003    &        0.005     \\
+        \textbf{exang}    &      -0.0659   &        0.030     &    -2.172  &         0.030        &       -0.125    &       -0.006     \\
+        \textbf{oldpeak}  &      -0.0770   &        0.015     &    -5.003  &         0.000        &       -0.107    &       -0.047     \\
+        \textbf{slope}    &       0.0706   &        0.026     &     2.755  &         0.006        &        0.020    &        0.121     \\
+        \textbf{ca}       &      -0.0842   &        0.013     &    -6.708  &         0.000        &       -0.109    &       -0.060     \\
+        \textbf{thal}     &      -0.0897   &        0.020     &    -4.385  &         0.000        &       -0.130    &       -0.050     \\
+    \end{tabular*} \\
+    \bottomrule
+\end{array}\label{tab:marginal}
