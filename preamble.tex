@@ -1,11 +1,19 @@
-\usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
-\usepackage{amsmath}
-\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% additional packages
+\usepackage{setspace}
+\setstretch{1.5}
+\setlength\columnsep{25pt}
+\hyphenpenalty=10000
 \usepackage{natbib}
 \usepackage{csquotes}
-%\usepackage{parskip}
-%\parskip=\baselineskip
 
 \usepackage{graphicx}
 \usepackage{float}
@@ -13,22 +21,11 @@
 \usepackage{subcaption}
 \usepackage[justification=centering]{caption}
 \usepackage{wrapfig}
-\usepackage{appendix}
+\usepackage{dblfloatfix}
 
 \usepackage{url}
 \def\UrlBreaks{\do\/\do-}
 \usepackage{breakurl}
-
-
-\fancypagestyle{titlepage}{%
-    \lhead{}%
-    \rhead{\thepage}%
-}
-\fancypagestyle{otherpage}{%
-    \lhead{}%
-    \rhead{\thepage}%
-}
-
 
 % risk factors
 \newcommand{\ARD}[4]{\frac{#1}{#1 + #2} - \frac{#3}{#3 + #4}}

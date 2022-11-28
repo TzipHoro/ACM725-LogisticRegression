@@ -1,0 +1,73 @@
+\documentclass[journal,12pt]{IEEEtran} % use the `journal` option for ITherm conference style
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+
+\include{preamble.tex}
+
+
+\begin{document}
+
+\title{Conference Paper Title*}
+
+\author{%%%% author names
+    \IEEEauthorblockN{Tziporah Horowitz}% first author
+    \\%%%% author affiliations
+    \IEEEauthorblockA{Johns Hopkins University, Whiting School of Engineering}\\% first affiliation
+    \IEEEauthorblockA{ACM 725 - Theory of Statistics I}
+}
+
+\maketitle
+\clearpage
+
+\begin{abstract}
+    This document is a model and instructions for \LaTeX.
+    This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes,
+    or Math in Paper Title or Abstract.
+\end{abstract}
+\clearpage
+
+
+\section{Introduction}
+\input{src/introduction.tex}
+
+\section{Logistic Regression}
+\input{src/lr-overview.tex}
+ 
+\clearpage
+
+\section{Methods}
+\input{src/methods.tex}
+
+\section{Results}
+\input{src/results.tex}
+
+
+\clearpage
+
+\singlespacing
+\bibliography{main}
+\bibliographystyle{IEEEtran}
+
+\clearpage
+\onecolumn
+
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+
+\section{Code}\label{sec:code}
+
+\subsection{data\_summary.py}\label{subsec:data_summary.py}
+\lstinputlisting[language=Python,label={lst:summary}]{data_summary.py}
+
+\clearpage
+
+\subsection{associated\_risk.py}\label{subsec:associated_risk.py}
+\lstinputlisting[language=Python,label={lst:risk}]{associated_risk.py}
+
+\clearpage
+
+\subsection{models.py}\label{subsec:models.py}
+\lstinputlisting[language=Python,label={lst:analysis}]{models.py}
+
+
+\end{document}

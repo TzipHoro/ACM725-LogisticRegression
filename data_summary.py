@@ -36,19 +36,22 @@ def get_lower_tri_heatmap(data, output="src/plots/correlation.png"):
     fig.savefig(output)
 
 
-if __name__ == '__main__':
+def get_box_plots(data):
     import plotnine as gg
 
-    # plot all sub-distributions
-    plots = []
-    for col in X:
+    for col in data:
         plot = gg.ggplot(df) +\
                gg.geom_boxplot(gg.aes(y=col, x='factor(target)', color='factor(target)'), notch=True) +\
                gg.xlab('target') +\
                gg.coord_flip() +\
                gg.scale_color_discrete(guide=False) +\
                gg.theme(text=gg.element_text(size=24))
-        plot.save(f'src/plots/target-{col}.png', 'png')
+        plot.save(f'plots/target-{col}.png', 'png')
+
+
+if __name__ == '__main__':
+    # plot all sub-distributions
+    get_box_plots(X)
 
     # corr plot
     get_lower_tri_heatmap(corr)
