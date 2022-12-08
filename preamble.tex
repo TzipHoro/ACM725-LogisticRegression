@@ -9,19 +9,22 @@
 
 % additional packages
 \usepackage{setspace}
-\setstretch{1.5}
-\setlength\columnsep{25pt}
+\setstretch{2}
+\usepackage[margin=1in]{geometry}
+% \setlength\columnsep{25pt}
 \hyphenpenalty=10000
 \usepackage{natbib}
 \usepackage{csquotes}
+\usepackage{lipsum}
 
-\usepackage{graphicx}
 \usepackage{float}
 \usepackage{adjustbox}
 \usepackage{subcaption}
 \usepackage[justification=centering]{caption}
 \usepackage{wrapfig}
-\usepackage{dblfloatfix}
+% \usepackage{dblfloatfix}
+\usepackage{booktabs}
+\usepackage{multirow}
 
 \usepackage{url}
 \def\UrlBreaks{\do\/\do-}
@@ -32,12 +35,24 @@
 \newcommand{\RR}[4]{\frac{#1 / (#1 + #2)}{#3 / (#3 + #4)}}
 \newcommand{\OR}[4]{\frac{#1 / #2}{#3 / #4}}
 
+% math
+\newcommand{\vec}[1]{\stackrel{\rightarrow}{#1}}
+\newcommand{\matrx}[1]{\boldsymbol{#1}}
+\newcommand{\argmax}[2]{\underset{#1}{\mathrm{argmax}} \left\{ #2 \right\}}
+\newcommand{\norm}[1]{\left| #1 \right|}
+
+% probability
+\newcommand{\logit}[1]{\text{logit}\left( #1 \right)}
+\newcommand{\prob}[1]{\mathbb{P} \left( #1 \right)}
+\newcommand{\bern}[1]{\mathrm{Bernoulli} \left( #1 \right)}
+\newcommand{\likelihood}[1]{\mathcal{L} \left( #1 \right)}
+\newcommand{\clikelihood}[2]{\mathcal{L} \left( #1 | #2 \right)}
+
 % limits
 \newcommand{\Lim}[3]{\underset{#1 \to #2}{\text{lim}} #3}
 
 % code blocks
 \usepackage{listings}
-\usepackage{xcolor}
 \usepackage{xparse}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}

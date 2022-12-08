@@ -7,7 +7,6 @@ from skimpy import skim
 
 # read data
 df = pd.read_csv('data/heart.csv')
-skim(df)
 
 X = df.drop('target', axis=1)
 y = df['target']
@@ -15,7 +14,7 @@ y = df['target']
 corr = df.corr()
 
 
-def get_lower_tri_heatmap(data, output="src/plots/correlation.png"):
+def get_lower_tri_heatmap(data, output="plots/correlation.png"):
     mask = np.zeros_like(data, dtype=np.bool)
     mask[np.triu_indices_from(mask)] = True
 
@@ -50,6 +49,7 @@ def get_box_plots(data):
 
 
 if __name__ == '__main__':
+    skim(df)
     # plot all sub-distributions
     get_box_plots(X)
 

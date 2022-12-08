@@ -1,31 +1,50 @@
-\def\arraystretch{0.7}
-\begin{array}{l}
-    \toprule
-    \begin{tabular}{lc}
+\def\arraystretch{1}
+\begin{table*}[!tp]
+
+\small
+\colorbox{gray!20}{
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{c}
+        \toprule
+    \begin{tabular*}{\textwidth}{lc}
         \textbf{Dep. Variable:} &     target      \\
         \textbf{Method:}        &      dydx       \\
         \textbf{At:}            &    overall      \\
-    \end{tabular} \\
-    \bottomrule
-
-    \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} rrrrrr}
-        \textbf{}     & \textbf{dy/dx} & \textbf{std err} & \textbf{z} & \textbf{P$> |$z$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
-
-        \midrule
-        \bottomrule
-        \textbf{age}      &       0.0029   &        0.001     &     2.007  &         0.045        &     6.93e-05    &        0.006     \\
-        \textbf{sex}      &      -0.2070   &        0.033     &    -6.267  &         0.000        &       -0.272    &       -0.142     \\
-        \textbf{cp}       &       0.0925   &        0.012     &     7.823  &         0.000        &        0.069    &        0.116     \\
-        \textbf{trestbps} &      -0.0012   &        0.001     &    -1.621  &         0.105        &       -0.003    &        0.000     \\
-        \textbf{chol}     &      -0.0013   &        0.000     &    -4.038  &         0.000        &       -0.002    &       -0.001     \\
-        \textbf{fbs}      &      -0.0368   &        0.040     &    -0.914  &         0.361        &       -0.116    &        0.042     \\
-        \textbf{restecg}  &       0.0358   &        0.027     &     1.348  &         0.178        &       -0.016    &        0.088     \\
-        \textbf{thalach}  &       0.0042   &        0.001     &     6.782  &         0.000        &        0.003    &        0.005     \\
-        \textbf{exang}    &      -0.0659   &        0.030     &    -2.172  &         0.030        &       -0.125    &       -0.006     \\
-        \textbf{oldpeak}  &      -0.0770   &        0.015     &    -5.003  &         0.000        &       -0.107    &       -0.047     \\
-        \textbf{slope}    &       0.0706   &        0.026     &     2.755  &         0.006        &        0.020    &        0.121     \\
-        \textbf{ca}       &      -0.0842   &        0.013     &    -6.708  &         0.000        &       -0.109    &       -0.060     \\
-        \textbf{thal}     &      -0.0897   &        0.020     &    -4.385  &         0.000        &       -0.130    &       -0.050     \\
     \end{tabular*} \\
+        \bottomrule
+
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} rrrrrr}
+     \textbf{}      & \textbf{dy/dx} & \textbf{std err} & \textbf{z} & \textbf{P$> |$z$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+\midrule
+
+\textbf{age}        &       0.0033   &        0.002     &     2.109  &         0.035        &        0.000    &        0.006     \\
+\textbf{sex}        &      -0.1986   &        0.035     &    -5.658  &         0.000        &       -0.267    &       -0.130     \\
+\textbf{trestbps}   &      -0.0022   &        0.001     &    -2.915  &         0.004        &       -0.004    &       -0.001     \\
+\textbf{chol}       &      -0.0013   &        0.000     &    -4.070  &         0.000        &       -0.002    &       -0.001     \\
+\textbf{fbs}        &       0.0257   &        0.039     &     0.662  &         0.508        &       -0.050    &        0.102     \\
+\textbf{thalach}    &       0.0021   &        0.001     &     3.038  &         0.002        &        0.001    &        0.004     \\
+\textbf{exang}      &      -0.0431   &        0.028     &    -1.533  &         0.125        &       -0.098    &        0.012     \\
+\textbf{oldpeak}    &      -0.0500   &        0.015     &    -3.324  &         0.001        &       -0.079    &       -0.021     \\
+\textbf{cp\_1}      &       0.0863   &        0.036     &     2.378  &         0.017        &        0.015    &        0.157     \\
+\textbf{cp\_2}      &       0.1657   &        0.031     &     5.338  &         0.000        &        0.105    &        0.227     \\
+\textbf{cp\_3}      &       0.2132   &        0.041     &     5.210  &         0.000        &        0.133    &        0.293     \\
+\textbf{restecg\_1} &       0.0110   &        0.025     &     0.434  &         0.664        &       -0.039    &        0.060     \\
+\textbf{restecg\_2} &      -0.0857   &        0.284     &    -0.301  &         0.763        &       -0.643    &        0.472     \\
+\textbf{slope\_1}   &      -0.0602   &        0.054     &    -1.122  &         0.262        &       -0.166    &        0.045     \\
+\textbf{slope\_2}   &       0.0710   &        0.058     &     1.229  &         0.219        &       -0.042    &        0.184     \\
+\textbf{ca\_1}      &      -0.2130   &        0.030     &    -7.037  &         0.000        &       -0.272    &       -0.154     \\
+\textbf{ca\_2}      &      -0.2949   &        0.043     &    -6.804  &         0.000        &       -0.380    &       -0.210     \\
+\textbf{ca\_3}      &      -0.2043   &        0.059     &    -3.447  &         0.001        &       -0.320    &       -0.088     \\
+\textbf{ca\_4}      &       0.1060   &        0.107     &     0.991  &         0.322        &       -0.104    &        0.316     \\
+\textbf{thal\_1}    &       0.3661   &        0.172     &     2.124  &         0.034        &        0.028    &        0.704     \\
+\textbf{thal\_2}    &       0.3470   &        0.172     &     2.022  &         0.043        &        0.011    &        0.683     \\
+\textbf{thal\_3}    &       0.2312   &        0.174     &     1.331  &         0.183        &       -0.109    &        0.572     \\
+
+\end{tabular*} \\
     \bottomrule
-\end{array}\label{tab:marginal}
+\end{tabular}
+}
+}
+
+\caption{Marginal Effects}\label{tab:marginal}
+\end{table*}

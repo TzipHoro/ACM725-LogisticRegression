@@ -1,7 +1,10 @@
+import warnings
 import pandas as pd
 from scipy.stats.contingency import relative_risk
 
 from data_summary import X, y
+
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # create dummies for categorical vars
 X['thal'] = X['thal'].astype('category')
@@ -42,7 +45,10 @@ for col in df.columns:
 risk = pd.DataFrame.from_records([risk_diff, risk_ratio, ci],
                                  index=['Risk Difference', 'Risk Ratio', 'RR 95% Confidence Interval'])
 risk = risk.transpose()
-risk['RR 95% Confidence Interval'] = risk['RR 95% Confidence Interval'].apply(lambda row: tuple([round(i, 4) for i in row]))
+risk['RR 95% Confidence Interval'] = risk['RR 95% Confidence Interval'].apply(
+    lambda row: tuple([round(i, 4) for i in row]))
+risk['RR 95% Confidence Interval'] = risk['RR 95% Confidence Interval'].apply(
+    lambda row: str(row) + '*' if not (row[0] <= 1 <= row[1]) else str(row))
 
 risk.set_axis(['age', 'sex', 'resting blood pressure > 130', 'serum cholestoral > 250 ml/dl',
                'fasting blood sugar > 120 mg/dl', 'maximum heart rate achieved > 150', 'exercise induced angina',
@@ -50,4 +56,12 @@ risk.set_axis(['age', 'sex', 'resting blood pressure > 130', 'serum cholestoral 
                'resting electrocardiograph = 2', 'slope = 1', 'slope = 2', 'major vessels colored = 1',
                'major vessels colored = 2', 'major vessels colored = 3', 'major vessels colored = 4',
                'thal = 1', 'thal = 2', 'thal = 3'], inplace=True)
+
+print('RD:')
+print(risk[risk['Risk Difference'] == risk['Risk Difference'].max()])
+print(risk[risk['Risk Difference'] == risk['Risk Difference'].min()])
+print('RR:')
+print(risk[risk['Risk Ratio'] == risk['Risk Ratio'].max()])
+print(risk[risk['Risk Ratio'] == risk['Risk Ratio'].min()])
+
 risk.to_latex('src/risk-tables.tex', column_format='lrrr')

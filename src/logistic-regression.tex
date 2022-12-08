@@ -1,35 +1,54 @@
-\def\arraystretch{0.7}
-\begin{array}{l}
-    \toprule
-    \begin{tabular*}{\textwidth}{lr @{\extracolsep{\fill}} lr}
-        \textbf{Dep. Variable:}   &      target      & \textbf{  No. Observations:  } &      615    \\
-        \textbf{Model:}           &      Logit       & \textbf{  Df Residuals:      } &      602    \\
-        \textbf{Method:}          &       MLE        & \textbf{  Df Model:          } &       12    \\
-        \textbf{Date:}            & Thu, 24 Nov 2022 & \textbf{  Pseudo R-squ.:     } &   0.5058    \\
-        \textbf{Time:}            &     15:10:58     & \textbf{  Log-Likelihood:    } &   -210.48   \\
-        \textbf{converged:}       &       True       & \textbf{  LL-Null:           } &   -425.93   \\
-        \textbf{Covariance Type:} &    nonrobust     & \textbf{  LLR p-value:       } & 1.073e-84   \\
-    \end{tabular*} \\
-    \bottomrule
 
-    \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} rrrrrr}
-          & \textbf{coef} & \textbf{std err} & \textbf{z} & \textbf{P$> |$z$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+\begin{table*}[!tp]
+
+\small
+\colorbox{gray!20}{
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{c}
+        \toprule
+        \begin{tabular*}{\textwidth}{lr @{\extracolsep{\fill}} lr}
+        \textbf{Dep. Variable:}   &      target      & \textbf{  No. Observations:  } &      615    \\
+        \textbf{Model:}           &      Logit       & \textbf{  Df Residuals:      } &      593    \\
+        \textbf{Method:}          &       MLE        & \textbf{  Df Model:          } &       21    \\
+        \textbf{Date:}            & Mon, 28 Nov 2022 & \textbf{  Pseudo R-squ.:     } &   0.5868    \\
+        \textbf{Time:}            &     20:02:19     & \textbf{  Log-Likelihood:    } &   -175.99   \\
+        \textbf{converged:}       &       True       & \textbf{  LL-Null:           } &   -425.93   \\
+        \textbf{Covariance Type:} &    nonrobust     & \textbf{  LLR p-value:       } & 1.574e-92   \\
+        \end{tabular*}    \\
+        \bottomrule
+        
+        \begin{tabular*}{\textwidth}{l  @{\extracolsep{\fill}} rrrrrr}
+                            & \textbf{coef} & \textbf{std err} & \textbf{z} & \textbf{P$> |$z$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
         \midrule
-        \textbf{age}      &       0.0272  &        0.014     &     1.983  &         0.047        &        0.000    &        0.054     \\
-        \textbf{sex}      &      -1.9158  &        0.335     &    -5.712  &         0.000        &       -2.573    &       -1.258     \\
-        \textbf{cp}       &       0.8560  &        0.128     &     6.698  &         0.000        &        0.606    &        1.107     \\
-        \textbf{trestbps} &      -0.0114  &        0.007     &    -1.613  &         0.107        &       -0.025    &        0.002     \\
-        \textbf{chol}     &      -0.0124  &        0.003     &    -3.859  &         0.000        &       -0.019    &       -0.006     \\
-        \textbf{fbs}      &      -0.3403  &        0.373     &    -0.912  &         0.362        &       -1.072    &        0.391     \\
-        \textbf{restecg}  &       0.3310  &        0.247     &     1.342  &         0.180        &       -0.153    &        0.814     \\
-        \textbf{thalach}  &       0.0390  &        0.006     &     6.062  &         0.000        &        0.026    &        0.052     \\
-        \textbf{exang}    &      -0.6096  &        0.285     &    -2.142  &         0.032        &       -1.167    &       -0.052     \\
-        \textbf{oldpeak}  &      -0.7124  &        0.154     &    -4.629  &         0.000        &       -1.014    &       -0.411     \\
-        \textbf{slope}    &       0.6537  &        0.242     &     2.697  &         0.007        &        0.179    &        1.129     \\
-        \textbf{ca}       &      -0.7788  &        0.131     &    -5.936  &         0.000        &       -1.036    &       -0.522     \\
-        \textbf{thal}     &      -0.8299  &        0.200     &    -4.142  &         0.000        &       -1.223    &       -0.437     \\
-    \end{tabular*} \\
-    \bottomrule
-    \end{array}\label{tab:table2}
-%\caption{Logit Regression Results}
-%\end{float}
+        \textbf{age}        &       0.0376  &        0.018     &     2.080  &         0.038        &        0.002    &        0.073     \\
+        \textbf{sex}        &      -2.2499  &        0.433     &    -5.195  &         0.000        &       -3.099    &       -1.401     \\
+        \textbf{trestbps}   &      -0.0244  &        0.009     &    -2.857  &         0.004        &       -0.041    &       -0.008     \\
+        \textbf{chol}       &      -0.0145  &        0.004     &    -3.853  &         0.000        &       -0.022    &       -0.007     \\
+        \textbf{fbs}        &       0.2915  &        0.441     &     0.661  &         0.509        &       -0.573    &        1.156     \\
+        \textbf{thalach}    &       0.0242  &        0.008     &     2.953  &         0.003        &        0.008    &        0.040     \\
+        \textbf{exang}      &      -0.4887  &        0.321     &    -1.523  &         0.128        &       -1.118    &        0.140     \\
+        \textbf{oldpeak}    &      -0.5662  &        0.177     &    -3.206  &         0.001        &       -0.912    &       -0.220     \\
+        \textbf{cp\_1}      &       0.9770  &        0.421     &     2.320  &         0.020        &        0.152    &        1.802     \\
+        \textbf{cp\_2}      &       1.8772  &        0.380     &     4.942  &         0.000        &        1.133    &        2.622     \\
+        \textbf{cp\_3}      &       2.4143  &        0.497     &     4.854  &         0.000        &        1.439    &        3.389     \\
+        \textbf{restecg\_1} &       0.1241  &        0.286     &     0.434  &         0.664        &       -0.436    &        0.685     \\
+        \textbf{restecg\_2} &      -0.9711  &        3.222     &    -0.301  &         0.763        &       -7.286    &        5.344     \\
+        \textbf{slope\_1}   &      -0.6824  &        0.610     &    -1.118  &         0.264        &       -1.879    &        0.514     \\
+        \textbf{slope\_2}   &       0.8047  &        0.657     &     1.224  &         0.221        &       -0.484    &        2.093     \\
+        \textbf{ca\_1}      &      -2.4127  &        0.394     &    -6.126  &         0.000        &       -3.185    &       -1.641     \\
+        \textbf{ca\_2}      &      -3.3407  &        0.553     &    -6.041  &         0.000        &       -4.425    &       -2.257     \\
+        \textbf{ca\_3}      &      -2.3139  &        0.697     &    -3.319  &         0.001        &       -3.680    &       -0.947     \\
+        \textbf{ca\_4}      &       1.2003  &        1.213     &     0.990  &         0.322        &       -1.177    &        3.577     \\
+        \textbf{thal\_1}    &       4.1461  &        1.976     &     2.098  &         0.036        &        0.273    &        8.019     \\
+        \textbf{thal\_2}    &       3.9308  &        1.967     &     1.999  &         0.046        &        0.076    &        7.785     \\
+        \textbf{thal\_3}    &       2.6183  &        1.976     &     1.325  &         0.185        &       -1.255    &        6.492     \\
+        \end{tabular*}  \\
+        \bottomrule
+        \end{tabular}
+    }
+}
+
+\caption{Logistic Regression Results}\label{tab:logit-regression}
+\end{table*}
+
+% \end{table*}
