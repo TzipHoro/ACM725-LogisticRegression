@@ -1,3 +1,4 @@
+import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -8,7 +9,12 @@ from sklearn.metrics import classification_report, accuracy_score, brier_score_l
 
 from associated_risk import X, y
 
+# import ROCMetrics
+sys.path.insert(0, r'C:\Users\tzipo\Documents\GitHub\NeuralNetworks-FinalProject')
+from ROC import ROCMetrics
+
 plt.style.use('ggplot')
+
 
 
 def specificity(tn, fp):
@@ -66,68 +72,26 @@ print(ame_df[ame_df['dy/dx'] == ame_df['dy/dx'].min()])
 
 # determine threshold
 yhat_in_sample = log_reg.predict(X_train)
-pred_in_sample = pd.DataFrame()
-
-sensitivity_is = [None] * 100
-specificity_is = [None] * 100
-precision_is = [None] * 100
-accuracy_is = [None] * 100
-
-for i in range(0, 100, 1):
-    threshold = i / 100
-    predicted = yhat_in_sample >= threshold
-    pred_in_sample[threshold] = predicted.astype(int)
-
-    conf_matrix = confusion_matrix(y_train, predicted)
-    tp = conf_matrix[1][1]
-    tn = conf_matrix[0][0]
-    fp = conf_matrix[0][1]
-    fn = conf_matrix[1][0]
-
-    sensitivity_is[i] = sensitivity(tp, fn)
-    specificity_is[i] = specificity(tn, fp)
-    precision_is[i] = precision(tp, fp)
-    accuracy_is[i] = accuracy_score(y_train, predicted)
-
-roc_df_is = pd.DataFrame({'sesitivity': sensitivity_is, 'specificity': specificity_is, 'precision': precision_is,
-                          'accuracy': accuracy_is},
-                         index=pred_in_sample.columns).transpose()
-pred_in_sample = pred_in_sample.append(roc_df_is)
-p_th = pred_in_sample.loc[['sesitivity', 'specificity', 'precision', 'accuracy'], :].sum().idxmax()
+roc = ROCMetrics(y_train, yhat_in_sample)
+thresholds = roc.threshold_matrix(step_size=0.001)
+p_th = thresholds.loc[['sensitivity', 'specificity', 'precision', 'accuracy', 'f1_score'], :].sum().idxmax()
+print(thresholds.loc[:, p_th].round(4))
+roc.roc_plot('plots/roc-is-1.png')
 
 # scoring in sample
 brier_score = brier_score_loss(y_train, yhat_in_sample)
 auc_ = roc_auc_score(y_train, yhat_in_sample)
 ll = log_loss(y_train, yhat_in_sample)
-fpr, tpr, thresholds = roc_curve(y_train, yhat_in_sample)
-roc_auc = auc(fpr, tpr)
-
-display = RocCurveDisplay(fpr=fpr, tpr=tpr, roc_auc=roc_auc, estimator_name='target')
-display.plot()
-plt.savefig('plots/roc-is-1.png')
 
 # predict
 yhat_out_of_sample = log_reg.predict(X_test)
-pred_out_of_sample = pd.DataFrame()
-for i in range(0, 100, 1):
-    threshold = i / 100
-    predicted = yhat_out_of_sample >= threshold
-    pred_out_of_sample[threshold] = predicted.astype(int)
-yhat = (yhat_out_of_sample >= p_th).astype(int)
+roc_oos = ROCMetrics(y_test, yhat_out_of_sample)
+thresholds_oos = roc_oos.threshold_matrix(step_size=0.001)
+p_th = thresholds_oos.loc[['sensitivity', 'specificity', 'precision', 'accuracy', 'f1_score'], :].sum().idxmax()
+print(thresholds.loc[:, p_th].round(4))
+roc_oos.roc_plot('plots/roc-oos-1.png')
 
 # scoring oos
 brier_score_oos = brier_score_loss(y_test, yhat_out_of_sample)
 auc_oos = roc_auc_score(y_test, yhat_out_of_sample)
 ll_oos = log_loss(y_test, yhat_out_of_sample)
-fpr_oos, tpr_oos, thresholds_oos = roc_curve(y_test, yhat_out_of_sample)
-roc_auc_oos = auc(fpr_oos, tpr_oos)
-
-display = RocCurveDisplay(fpr=fpr_oos, tpr=tpr_oos, roc_auc=roc_auc_oos, estimator_name='target')
-display.plot()
-plt.savefig('plots/roc-oos-1.png')
-
-# score
-conf_matrix = pd.crosstab(y_test, yhat, rownames=['Actual'], colnames=['Predicted'], margins=True)
-accuracy_ = accuracy_score(y_test, yhat)
-roc = classification_report(y_test, yhat)
-print(roc)
