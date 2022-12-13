@@ -1,1 +1,2 @@
-*.tex linguist-language=Python
+/*.tex linguist-language=Python
+/src/*.tex linguist-language=Python
