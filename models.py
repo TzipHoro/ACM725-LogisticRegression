@@ -4,8 +4,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, accuracy_score, brier_score_loss, roc_auc_score, log_loss, \
-    roc_curve, auc, RocCurveDisplay, confusion_matrix
+from sklearn.metrics import brier_score_loss, roc_auc_score, log_loss
 
 from associated_risk import X, y
 
@@ -16,24 +15,12 @@ from ROC import ROCMetrics
 plt.style.use('ggplot')
 
 
-
-def specificity(tn, fp):
-    return tn / (tn + fp)
-
-
-def sensitivity(tp, fn):
-    return tp / (tp + fn)
-
-
-def precision(tp, fp):
-    return tp / (tp + fp)
-
-
-def accuracy(tp, tn, fp, fn):
-    return (tp + tn) / (tp + tn + fp + fn)
-
-
 # train/test split
+X.columns = ['age', 'sex', 'resting blood pressure', 'serum cholesterol', 'fasting blood sugar > 120 mg/dl', 
+             'maximum heart rate achieved', 'exercise induced angina', 'oldpeak', 'chest pain = 1', 'chest pain = 2', 
+             'chest pain = 3', 'resting electrocardiograph = 1', 'resting electrocardiograph = 2', 'slope = 1', 
+             'slope = 2', 'major vessels colored = 1', 'major vessels colored = 2', 'major vessels colored = 3',
+             'major vessels colored = 4', 'thalassemia = 1', 'thalassemia = 2', 'thalassemia = 3']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
 
 # logistic regression
@@ -76,7 +63,7 @@ roc = ROCMetrics(y_train, yhat_in_sample)
 thresholds = roc.threshold_matrix(step_size=0.001)
 p_th = thresholds.loc[['sensitivity', 'specificity', 'precision', 'accuracy', 'f1_score'], :].sum().idxmax()
 print(thresholds.loc[:, p_th].round(4))
-roc.roc_plot('plots/roc-is-1.png')
+roc.roc_plot(thresholds, 'plots/roc-is-1.png')
 
 # scoring in sample
 brier_score = brier_score_loss(y_train, yhat_in_sample)
@@ -89,7 +76,7 @@ roc_oos = ROCMetrics(y_test, yhat_out_of_sample)
 thresholds_oos = roc_oos.threshold_matrix(step_size=0.001)
 p_th = thresholds_oos.loc[['sensitivity', 'specificity', 'precision', 'accuracy', 'f1_score'], :].sum().idxmax()
 print(thresholds.loc[:, p_th].round(4))
-roc_oos.roc_plot('plots/roc-oos-1.png')
+roc_oos.roc_plot(thresholds, 'plots/roc-oos-1.png')
 
 # scoring oos
 brier_score_oos = brier_score_loss(y_test, yhat_out_of_sample)

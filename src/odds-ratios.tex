@@ -1,39 +1,39 @@
-\def\arraystretch{0.5}
-\begin{wraptable}{r}{.55\textwidth}
+% \def\arraystretch{0.5}
+\begin{table*}[!tp]
 % \begin{table^^*}[h]
 % \small
-\centering\caption{Odds Ratios}\label{tab:odds}
 \colorbox{gray!20}{
-\resizebox{.5\textwidth}{!}{
+\resizebox{.7\textwidth}{!}{
     \begin{tabular}{lrr}
     \toprule
     {} &  Odds Ratio & OR 95\% Confidence Interval \\
     \midrule
-    age       &      1.0383 &          (1.0022, 1.0758)^* \\
-    sex       &      0.1054 &          (0.0451, 0.2463)^* \\
-    trestbps  &      0.9759 &          (0.9597, 0.9924)^* \\
-    chol      &      0.9856 &          (0.9784, 0.9929)^* \\
-    fbs       &      1.3384 &           (0.5639, 3.1764) \\
-    thalach   &      1.0245 &          (1.0082, 1.0411)^* \\
-    exang     &      0.6134 &           (0.3271, 1.1505) \\
-    oldpeak   &      0.5677 &          (0.4016, 0.8025)^* \\
-    cp\_1      &      2.6565 &          (1.1638, 6.0638)^* \\
-    cp\_2      &      6.5352 &          (3.104, 13.7594)^* \\
-    cp\_3      &     11.1815 &         (4.2184, 29.6385)^* \\
-    restecg\_1 &      1.1322 &           (0.6464, 1.9829) \\
-    restecg\_2 &      0.3787 &         (0.0007, 209.2937) \\
-    slope\_1   &      0.5054 &           (0.1528, 1.6717) \\
-    slope\_2   &      2.2360 &           (0.6163, 8.1119) \\
-    ca\_1      &      0.0896 &          (0.0414, 0.1938)^* \\
-    ca\_2      &      0.0354 &           (0.012, 0.1047)^* \\
-    ca\_3      &      0.0989 &          (0.0252, 0.3878)^* \\
-    ca\_4      &      3.3210 &          (0.3082, 35.7816) \\
-    thal\_1    &     63.1862 &       (1.3143, 3037.8507)^* \\
-    thal\_2    &     50.9487 &       (1.0792, 2405.3763)^* \\
-    thal\_3    &     13.7129 &          (0.285, 659.8043) \\
+    age                             &      1.0383 &          (1.0022, 1.0758)* \\
+    sex                             &      0.1054 &          (0.0451, 0.2463)* \\
+    resting blood pressure          &      0.9759 &          (0.9597, 0.9924)* \\
+    serum cholesterol               &      0.9856 &          (0.9784, 0.9929)* \\
+    fasting blood sugar $>$ 120 mg/dl &      1.3384 &           (0.5639, 3.1764) \\
+    maximum heart rate achieved     &      1.0245 &          (1.0082, 1.0411)* \\
+    exercise induced angina         &      0.6134 &           (0.3271, 1.1505) \\
+    oldpeak                         &      0.5677 &          (0.4016, 0.8025)* \\
+    chest pain = 1                  &      2.6565 &          (1.1638, 6.0638)* \\
+    chest pain = 2                  &      6.5352 &          (3.104, 13.7594)* \\
+    chest pain = 3                  &     11.1815 &         (4.2184, 29.6385)* \\
+    resting electrocardiograph = 1  &      1.1322 &           (0.6464, 1.9829) \\
+    resting electrocardiograph = 2  &      0.3787 &         (0.0007, 209.2937) \\
+    slope = 1                       &      0.5054 &           (0.1528, 1.6717) \\
+    slope = 2                       &      2.2360 &           (0.6163, 8.1119) \\
+    major vessels colored = 1       &      0.0896 &          (0.0414, 0.1938)* \\
+    major vessels colored = 2       &      0.0354 &           (0.012, 0.1047)* \\
+    major vessels colored = 3       &      0.0989 &          (0.0252, 0.3878)* \\
+    major vessels colored = 4       &      3.3210 &          (0.3082, 35.7816) \\
+    thalassemia = 1                 &     63.1862 &       (1.3143, 3037.8507)* \\
+    thalassemia = 2                 &     50.9487 &       (1.0792, 2405.3763)* \\
+    thalassemia = 3                 &     13.7129 &          (0.285, 659.8043) \\
     \bottomrule
     \end{tabular}
 }
 }
+\centering\caption{Odds Ratios}\label{tab:odds}
 % \end{table^^*}
-\end{wraptable}
+\end{table*}

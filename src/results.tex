@@ -1,25 +1,50 @@
 
+Table \ref{tab:risk} shows the risk difference and the relative risk of feature variables when compared against the target.
+The variable with the highest risk difference is \emph{thalassemia = 2}, with a difference of $0.5203$; meaning, on average, in a sample of $100$ patients $52$ more patients who have Thalassemia (a blood disease characterized by low hemoglobin production) as a fixed defect will develop heart disease than patients without Thalassemia.
+The variable with the lowest risk difference is is \emph{thalassemia = 3} with a difference of $-0.4894$; meaning, on average, in a sample of $100$ patients $49$ fewer patients who have Thalassemia as a reversible defect will develop heart disease than patients without Thalassemia. 
+Comparing the risk difference to the risk ratio, variables with risk differences less than zero have risk ratios less than 1 and variables with risk differences greater than zero have risk ratios greater than 1. 
+\input{src/risk-tables.tex}
+Of the 22 risk ratios, only 2 variables have confidence intervals that contain 1, and thus accept the null-hypothesis. 
+The variable with the highest statistically significant risk ratio is \emph{thalassemia = 2}, with a risk ratio of $3.1955$; meaning, patients who have Thalassemia as a fixed defect are $3.1955$ times more likely to develop heart disease than patients without Thalassemia.
+The variable with the lowest statistically significant risk ratio is \emph{major vessels colored = 3}, with a risk ratio of $0.2412$; meaning, patients who had 3 major blood vessels colored in a flourosopy are $0.2412$ times less likely to develop heart disease than patients who had no major blood vessels colored in a flourosopy.
 
 
+To compute the odds ratios and the marginal effects, a logistic regression model was fit.
+\input{src/logistic-regression.tex}
+Table~\ref{tab:logit-regression} shows the regression results using the maximum likelihood method.
+The log-likelihood of the model is $-175.99$, which is significantly larger than the log-likelihood of the null-model, $-425.93$, given the log-likelihood ratio test p-value of $1.574\mathrm{e-}92$.
 
-\begin{figure*}[!bp]
-    \caption{Receiver Operator Curves}\label{fig:roc}
+Table \ref{tab:odds} shows the odds ratios of the regression, which were obtained by exponentiating the coefficients in table \ref{tab:logit-regression}.
+Of the 22 odds ratios, 8 variables have confidence intervals that contain 1, and thus accept the null-hypothesis.
+The variable with the highest statistically significant odds ratio is \emph{thalassemia = 1}, with an odds ratio of $63.1862$; meaning, the odds of contacting heart disease are $63.1862$ times higher for patients with normal Thalassemia than patients without Thalassemia.
+The variable with the lowest statistically significant odds ratio is \emph{major vessels colored = 2}, with an odds ratio of $0.0354$; meaning, the odds of contacting heart disease are $0.0354$ times lower for patients who had two major blood vessels colored by a fluoroscopy than patients who had no major blood vessels colored by a fluoroscopy.
+\input{src/odds-ratios.tex}
+
+Table \ref{tab:marginal} shows the marginal effects of the regression output. Of the 22 marginal effects, 8 variables have p-values greater than $5\%$, and thus accept the null-hypothesis. 
+It's important to note that these are the same variables that have statistically insignificant odds ratios.
+The variable with the highest statistically significant marginal effect is \emph{thalassemia = 1}, with an average marginal effect of $0.3661$; meaning that the average change in probability is $0.3661$ when a patient has normal Thalassemia.
+\input{src/marginal-effects.tex}
+The variable with the lowest statistically significant marginal effect is \emph{major vessels colored = 2}, with an average marginal effect of $-0.2949$; meaning that the average change in probability is $-0.2949$ when a patient who has two major blood vessels colored by a fluoroscopy.
+
+\begin{figure*}[!tp]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
-        \caption{In Sample}
         \centering
         \includegraphics[width=\textwidth]{plots/roc-is-1.png}
+        \caption{In Sample}
     \end{subfigure}
     \begin{subfigure}[b]{0.49\textwidth}
-        \caption{Out of Sample}
         \centering
         \includegraphics[width=\textwidth]{plots/roc-oos-1.png}
+        \caption{Out of Sample}
     \end{subfigure}
+    \caption{Receiver Operator Curves}\label{fig:roc}
 \end{figure*}
-
 When predicting in sample, the model had a log-loss score of $0.2862$, a Brier score of $0.0836$, and an AUC of $0.9501$, indicating that the model predicts well in sample. 
 After training the model, a receiver operating characteristic analysis was applied to determine the optimal threshold for predicting the target. 
 To calculate the ROC metrics, a confusion matrix was created for each hundredth between $0$ and $1$. 
-The selected threshold was $0.5$ with an accuracy of $0.9008$, a precision of $0.8930$, a sensitivity of $0.9182$, and a specificity of $0.8822$.
+The selected threshold was $0.512$ with an accuracy of $0.8943$, a precision of $0.8941$, a sensitivity of $0.9025$, and a specificity of $0.8855$.
 When predicting out of sample, the model had a log-loss score of $0.3406$, a Brier score of $0.1073$, and an AUC of $0.9294$, indicating that the model does not lose much generality when introduced to new data. 
 Figure~\ref{fig:roc} shows the in sample and out of sample receiver operator curves.
+
+

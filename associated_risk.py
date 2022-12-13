@@ -50,12 +50,12 @@ risk['RR 95% Confidence Interval'] = risk['RR 95% Confidence Interval'].apply(
 risk['RR 95% Confidence Interval'] = risk['RR 95% Confidence Interval'].apply(
     lambda row: str(row) + '*' if not (row[0] <= 1 <= row[1]) else str(row))
 
-risk.set_axis(['age', 'sex', 'resting blood pressure > 130', 'serum cholestoral > 250 ml/dl',
+risk.set_axis(['age', 'sex', 'resting blood pressure > 130', 'serum cholesterol > 250 ml/dl',
                'fasting blood sugar > 120 mg/dl', 'maximum heart rate achieved > 150', 'exercise induced angina',
                'oldpeak', 'chest pain = 1', 'chest pain = 2', 'chest pain = 3', 'resting electrocardiograph = 1',
                'resting electrocardiograph = 2', 'slope = 1', 'slope = 2', 'major vessels colored = 1',
                'major vessels colored = 2', 'major vessels colored = 3', 'major vessels colored = 4',
-               'thal = 1', 'thal = 2', 'thal = 3'], inplace=True)
+               'thalassemia = 1', 'thalassemia = 2', 'thalassemia = 3'], inplace=True)
 
 print('RD:')
 print(risk[risk['Risk Difference'] == risk['Risk Difference'].max()])

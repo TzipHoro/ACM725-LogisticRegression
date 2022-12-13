@@ -1,16 +1,17 @@
 There are several ways to measure the association between a risk factor and the binary outcome of contracting a disease.
 The following sections discuss the four approaches used in this analysis to determine the associated risk of various factors in the context of patients contracting heart disease.
+Two of the methods are computed algebraically, while the other two can be derived from a logistic regression model.
 Sections~\ref{subsec:associated-risk-difference} through~\ref{subsec:odds-ratio} refer to table~\ref{tab:contingency} for simplification.
 
-\begin{table}[b]
-    \caption{Contingency Matrix}
-    \label{tab:contingency}
+\begin{table}[t]
     \centering
     \begin{tabular}{|r|cc|}
         \hline & {\text{ Diseased }} & {\text{ Healthy }} \\
         \hline {\text{ Exposed }} & $D_E$ & $H_E$ \\
         {\text{ Unexposed }} & $D_U$ & $H_U$ \\ \hline
     \end{tabular}
+    \caption{Contingency Matrix}
+    \label{tab:contingency}
 \end{table}
 
 \subsection{Risk Difference}\label{subsec:associated-risk-difference}
@@ -61,9 +62,8 @@ However, in cases where the risk factor is relatively small ($< 10\%$), the odds
 %        \Lim{D_E}{0}{D_E + H_E} = H_E \\
 %        \Lim{D_U}{0}{D_U + H_U} = H_U
 %    \end{matrix} &\implies
-    \RR{D_{E}}{H_{E}}{D_{U}}{H_{U}} \approx \OR{D_{E}}{H_{E}}{D_{U}}{H_{U}}
+    \RR{D_{E}}{H_{E}}{D_{U}}{H_{U}} \approx \OR{D_{E}}{H_{E}}{D_{U}}{H_{U}} & & \text{if } D_E \text{ and } D_U \text{ are small.}
 \end{align*}
-if $D_E$ and $D_U$ are small.
 
 The odds ratio can be applied in multi-parameter settings when computed in a logistic regression analysis, due to its inherent calculation of the logit (or log-odds) function.
 To obtain the odds ratio of a logistic regression model, one simply has to exponentiate the coefficients.
@@ -80,6 +80,15 @@ There are many ways to represent the marginal effect for a sample, the most comm
 
 \subsection{The Analysis}\label{subsec:analysis}
 
+
+
+For this analysis, the \emph{Heart Disease Dataset} was collected from kaggle.com~\citep{Heart-disease-dataset}.
+The dataset includes data that was compiled from four databases in 1988 and consists of 1025 rows and 14 columns: 13 predictors and 1 target.
+\begin{figure*}[!bp]
+    \centering
+    \caption[Figure]{Summary of Variables} \label{fig:skim}
+    \includegraphics[width=.7\textwidth]{plots/skimpy-summary}
+\end{figure*}
 \begin{figure*}[btp]
      \centering
      \begin{subfigure}[b]{0.32\textwidth}
@@ -141,59 +150,17 @@ There are many ways to represent the marginal effect for a sample, the most comm
 
      \caption[Figure]{Distributions of Feature Variables with Respect to the Target} \label{fig:subdistributions}
 \end{figure*}
-
-For this analysis, the \emph{Heart Disease Dataset} was collected from kaggle.com~\citep{Heart-disease-dataset}.
-The dataset includes data that was compiled from four databases in 1988 and consists of 1025 rows and 14 columns: 13 predictors and 1 target.
 The predictors include 5 continuous variables: age, resting blood pressure, serum cholestoral (in mg/dl), maximum heart rate achieved, and ST depression induced by exercise relative to rest (oldpeak);
 and 8 categorical variables: sex, chest pain type, fasting blood sugar $>$ 120 mg/dl (true or false), resting electrocardiographic results, exercise induced angina (yes or no), the slope of the peak exercise ST segment, number of major vessels (0-3) colored by flourosopy, and thal (normal, fixed defect, reversible defect).
-Figure~\ref{fig:subdistributions} shows the distributions of predictor variables when compared to the target, a binary indicator for the patient having heart disease and figure~\ref{fig:skim} shows the \inlinecodettt{skimpy} summary of all 14 variables.
+Figure~\ref{fig:skim} shows the \inlinecodettt{skimpy} summary of all 14 variables and figure~\ref{fig:subdistributions} shows the distributions of predictor variables when compared to the target, a binary indicator for the patient having heart disease.
 
-\begin{figure*}[tp]
-    \centering
-    \includegraphics[width=.7\textwidth]{plots/skimpy-summary}
-     \caption[Figure]{Summary of Variables} \label{fig:skim}
-\end{figure*}
-
-Prior to computing any of the above measures of associated risk, the data was imported into Python (3.9) using \inlinecodettt{pandas} and dummy variables were created for the categorical columns.
+Prior to computing any of the above measures of associated risk, the data was imported into Python (3.9) using \inlinecodettt{pandas} (1.5.2) and dummy variables were created for the categorical columns.
 Individual risk differences and risk ratios were then computed for each predictor variable.
 The dataset was then divided into a $3:2$ train-test split so that a logistic regression model can be fit.
-Two models were fit using the training set to the objective function,
+The models was fit using the training set to the objective function,
 \begin{align*}
     \logit{Y} = \vec{\beta}\matrx{X}
 \end{align*}
-via \inlinecodettt{statsmodels}.
-One was computed with the odds ratio, and the other with marginal effects.
-The models were then tested with the remainder of the data and scored using \inlinecodettt{sklearn}.
-
-%%%%%%%%%%%%%%%%%
-
-\input{src/risk-tables.tex}
-
-\input{src/logistic-regression.tex}
-
-Table \ref{tab:risk} shows the risk difference and the relative risk of feature variables when compared against the target.
-The variable with the highest risk difference is \emph{thal = 2}, with a difference of $0.5203$; meaning, on average, in a sample of $100$ patients $52$ more patients who have Thalassemia (a blood disease characterized by low hemoglobin production) as a fixed defect will contract heart disease than patients without Thalassemia.
-The variable with the lowest risk difference is is \emph{thal = 3} with a difference of $-0.4894$; meaning, on average, in a sample of $100$ patients $49$ fewer patients who have Thalassemia as a reversible defect will contract heart disease than patients without Thalassemia. 
-Comparing the risk difference to the risk ratio, variables with risk differences less than zero have risk ratios less than 1 and variables with risk differences greater than zero have risk ratios greater than 1. 
-Of the 22 risk ratios, only 2 variables have confidence intervals that contain 1, and thus accept the null-hypothesis. 
-The variable with the highest statistically significant risk ratio is \emph{thal = 2}, with a risk ratio of $3.1955$; meaning, patients who have Thalassemia as a fixed defect are $3.1955$ times more likely to contract heart disease than patients without Thalassemia.
-The variable with the lowest statistically significant risk ratio is \emph{major vessels colored = 3}, with a risk ratio of $0.2412$; meaning, patients who had 3 major blood vessels colored in a flourosopy are $0.2412$ times less likely to contract heart disease than patients who had no major blood vessels colored in a flourosopy.
-
-
-To compute the odds ratios and the marginal effects, two logistic regression models were fit; one using the maximum likelihood method and the other using the average marginal effects.
-Table~\ref{tab:logit-regression} shows the regression results for the maximum likelihood model.
-The log-likelihood of the model is $-175.99$, which is significantly larger than the log-likelihood of the null-model, $-425.93$, given the log-likelihood ratio test p-value of $1.574\mathrm{e-}92$.
-
-Table \ref{tab:odds} shows the odds ratios of the regression, which were obtained by exponentiating the coefficients in table \ref{tab:logit-regression}.
-Of the 22 odds ratios, 8 variables have confidence intervals that contain 1, and thus accept the null-hypothesis.
-The variable with the highest statistically significant odds\input{src/odds-ratios.tex}ratio is \emph{thal = 1}, with an odds ratio of $63.1862$; meaning, the odds of contacting heart disease are $63.1862$ times higher for patients with normal Thalassemia than patients without Thalassemia.
-The variable with the lowest statistically significant odds ratio is \emph{major vessels colored = 2}, with an odds ratio of $0.0354$; meaning, the odds of contacting heart disease are $0.0354$ times lower for patients who had two major blood vessels colored by a fluoroscopy than patients who had no major blood vessels colored by a fluoroscopy.
-
-Table \ref{tab:marginal} shows the marginal effects of the regression output. Of the 22 marginal effects, 8 variables have p-values greater than $5\%$, and thus accept the null-hypothesis. 
-It's important to note that these are the same variables that have statistically insignificant odds ratios.
-The variable with the highest statistically significant marginal effect is \emph{thal = 1}, with an average marginal effect of $0.3661$; meaning that the average change in probability is $0.3661$ when a patient has normal Thalassemia. 
-The variable with the lowest statistically significant marginal effect is \emph{major vessels colored = 2}, with an average marginal effect of $-0.2949$; meaning that the average change in probability is $-0.2949$ when a patient who has two major blood vessels colored by a fluoroscopy.
-
-
-
-\input{src/marginal-effects.tex}
+via \inlinecodettt{statsmodels} (0.13.5).
+The odds ratios and the marginal effects were computed for each feature using the outputs of the logistic regression model.
+The model was then tested with the remainder of the data and scored using \inlinecodettt{scikit-learn} (1.1.3).

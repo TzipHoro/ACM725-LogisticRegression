@@ -1,29 +1,26 @@
-\documentclass[journal,12pt,onecolumn]{IEEEtran} % use the `journal` option for ITherm conference style
-% \IEEEoverridecommandlockouts
+\documentclass[journal,12pt,onecolumn]{article}
 
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
-
-\include{preamble.tex}
+\include{preamble}
 
 
 \begin{document}
 
-\title{Paper Title*}
-
-\author{%%%% author names
-    \IEEEauthorblockN{Tziporah Horowitz}% first author
-    \\%%%% author affiliations
-    \IEEEauthorblockA{Johns Hopkins University, Whiting School of Engineering}\\% first affiliation
-    \IEEEauthorblockA{ACM 725 - Theory of Statistics I}
-}
+\title{Measuring Risks of Heart Disease Using \\
+Logistic Regression}
+\affil{Johns Hopkins University \\
+Whiting School of Engineering \\
+Applied and Computational Mathematics 725}
 
 \maketitle
 \clearpage
 
 \begin{abstract}
-    This document is a model and instructions for \LaTeX.
-    This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes,
-    or Math in Paper Title or Abstract.
+    Heart disease describes a range adverse conditions that affect the heart such as, coronary artery disease and heart attack. 
+    It is the leading cause of death in the United States.
+    While some people may be genetically predisposed toward developing heart disease, others can have an increased risk due to poor diet and exercise and other biological conditions.
+    Knowing the association between risk factors and the chances of developing heart disease can allow one to take preventative action by changing lifestyle habits.
+    This paper discusses statistical methods that can be used to measure the associated risk between various risk factors and the likelihood of developing heart disease. An analysis was performed using real-world data to compare simple methods like risk difference and relative risk to those that can be measured by a logistic regression model.
+    After determining the associated risks, the logistic regression model's predictive capabilities were tested, resulting in high accuracy.
 \end{abstract}
 \clearpage
 
@@ -37,10 +34,11 @@
 \section{Methods}
 \input{src/methods.tex}
 
-\section{Results}
+\section{Results}\label{sec:Results}
 \input{src/results.tex}
 
 \section{Discussion}
+\input{src/discussion.tex}
 
 
 
@@ -70,6 +68,13 @@
 
 \subsection{models.py}\label{subsec:models.py}
 \lstinputlisting[language=Python,label={lst:analysis}]{models.py}
+
+\clearpage
+
+\subsection{ROCMetrics}\label{subsec:ROC.py}
+The ROC.py script that was imported in \ref{subsec:models.py} was imported from another project. The following is the code for the ROCMetrics class that was used. The full script can be found in my GitHub repository at \href{https://github.com/TzipHoro/NeuralNetworks-FinalProject/blob/master/ROC.py}{https://github.com/TzipHoro/NeuralNetworks-FinalProject}. 
+
+\lstinputlisting[language=Python,label={lst:roc}]{ROC.py}
 
 
 \end{document}

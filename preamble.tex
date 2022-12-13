@@ -1,5 +1,8 @@
 \usepackage{cite}
+\usepackage{authblk}
+\usepackage{mathptmx}
 \usepackage{amsmath,amssymb,amsfonts}
+\usepackage[nodisplayskipstretch]{setspace}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
@@ -8,7 +11,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 % additional packages
-\usepackage{setspace}
+% \usepackage{setspace}
 \setstretch{2}
 \usepackage[margin=1in]{geometry}
 % \setlength\columnsep{25pt}
@@ -29,6 +32,17 @@
 \usepackage{url}
 \def\UrlBreaks{\do\/\do-}
 \usepackage{breakurl}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    citecolor=black
+    }
 
 % risk factors
 \newcommand{\ARD}[4]{\frac{#1}{#1 + #2} - \frac{#3}{#3 + #4}}
@@ -53,6 +67,7 @@
 
 % code blocks
 \usepackage{listings}
+\usepackage{inconsolata}
 \usepackage{xparse}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
