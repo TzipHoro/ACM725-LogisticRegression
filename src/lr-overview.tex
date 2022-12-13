@@ -1,0 +1,46 @@
+Logistic regression was proposed as an alternative to ordinary least squares (OLS) regression in the 1960's in the context of predicting binary outcomes~\citep{An-Introduction-to-Logistic-Regression-Analysis-and-Reporting}. 
+While OLS relies on linearity, normality, and continuity, logistic regression utilizes the \emph{logit} or log-odds function (eq. \ref{eq:logit}) to predict the probability of an outcome falling into a specific category. 
+\begin{align}
+    \logit{Y} = \ln \left( \frac{p}{1-p} \right) \label{eq:logit}
+\end{align}
+Using the logit function allows the modeler to create a sigmoidal relationship between two classes, which appears linear in the middle and curved on the ends.
+
+Let $\hat{p}$ be the probability of an outcome occurring given a specific value of a feature:
+\begin{align}
+    \hat{p} = \prob{Y = 1 | X = x} = \frac{1}{1 + e^{-(\alpha + \beta x)}} \label{eq:sigmoid}
+\end{align}
+By rewriting the sigmoid function in equation \ref{eq:sigmoid} and taking its natural logarithm, we can derive a linear relationship between the log-odds of $\hat{p}$ and the feature variable, $x$:
+\begin{align*}
+    \hat{p} &= \frac{1}{1 + e^{-(\alpha + \beta x)}} \\
+    \frac{1}{\hat{p}} &= 1 + e^{-(\alpha + \beta x)} \\
+    \frac{1}{\hat{p}} - 1 &= e^{-(\alpha + \beta x)} \\
+    \frac{1 - \hat{p}}{\hat{p}} &= e^{-(\alpha + \beta x)} \\
+    \ln \left( \frac{1 - \hat{p}}{\hat{p}} \right) &= -(\alpha + \beta x) \\
+    \ln \left( \frac{\hat{p}}{1 - \hat{p}} \right) &= \alpha + \beta x
+\end{align*}
+Thus, logistic regression can be expressed a generalized linear model (GLM), such that
+\begin{align*}
+    \logit{Y} = \vec{\beta}\matrx{X}
+\end{align*}
+where $\vec{\beta}$ is the vector of regression coefficients and $\matrx{X}$ is the matrix of feature variables.
+
+While there are a number of different techniques, the regression coefficients are typically estimated using the \emph{maximum likelihood} method. The maximum likelihood method aims to maximize the likelihood of reproducing the data given the parameter estimates~\citep{An-Introduction-to-Logistic-Regression-Analysis-and-Reporting}. Let $Y_i | X_i \stackrel{ind}{\sim} \bern{f(\vec{x}_i)}$. Then, the joint likelihood function is:
+\begin{align*}
+    \likelihood{\vec{\beta}} =
+    \prob{Y_1 = y_1, \dots, Y_n = y_n | \vec{x_1}, \dots, \vec{x_n}}
+    = \prod_{i=1}^n f(\vec{x}_i)^{y_i} \left( 1 - f(\vec{x}_i) \right)^{1-y_i}
+\end{align*}
+Thus, the maximum likelihood estimate of the logistic regression function is:
+\begin{align}
+    \vec{\beta} = \argmax{\vec{w}}{\prod_{i=1}^n \left( \frac{1}{1+e^{-\vec{w}\matrx{X}}} \right)^{y_i} \left( \frac{1}{1+e^{\vec{w}\matrx{X}}} \right)^{1-y_i} \label{eq:mle}}
+\end{align}
+However, it is important to note that the gradient vector of equation \ref{eq:mle} cannot be solved for zero, and therefore has no closed form.
+A common approach for solving equation \ref{eq:mle} numerically is the \emph{reweighted least squares} algorithm~\citep{Wasserman2004}.
+
+The coefficients of a logistic regression model can be interpreted as, $\beta_i$ is the change of the log-odds of the target occurring per one unit increase of $X_i$ when all other variables $X_j$ $(j \neq i)$ are fixed. 
+The estimates, $\hat{\beta}_i$ can be tested for statistical significance using a Wald test where
+\begin{align*}
+    H_0&: \hat{\beta}_i = 0 \\
+    H_1&: \hat{\beta}_i \neq 0
+\end{align*}
+If $\norm{W} = \norm{\frac{\hat{\beta}_i - 0}{\hat{\text{se}}}}$ is greater than $z_{\frac{\alpha}{2}}$, then the null-hypothesis is rejected and $\hat{\beta}_i$ is considered statistically significant.

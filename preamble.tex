@@ -1,0 +1,100 @@
+\usepackage{cite}
+\usepackage{authblk}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% additional packages
+% \usepackage{setspace}
+\setstretch{2}
+\usepackage[margin=1in]{geometry}
+% \setlength\columnsep{25pt}
+\hyphenpenalty=10000
+\usepackage{natbib}
+\usepackage{csquotes}
+\usepackage{lipsum}
+
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage{subcaption}
+\usepackage[justification=centering]{caption}
+\usepackage{wrapfig}
+% \usepackage{dblfloatfix}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+\usepackage{breakurl}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    citecolor=black
+    }
+
+% risk factors
+\newcommand{\ARD}[4]{\frac{#1}{#1 + #2} - \frac{#3}{#3 + #4}}
+\newcommand{\RR}[4]{\frac{#1 / (#1 + #2)}{#3 / (#3 + #4)}}
+\newcommand{\OR}[4]{\frac{#1 / #2}{#3 / #4}}
+
+% math
+\newcommand{\vec}[1]{\stackrel{\rightarrow}{#1}}
+\newcommand{\matrx}[1]{\boldsymbol{#1}}
+\newcommand{\argmax}[2]{\underset{#1}{\mathrm{argmax}} \left\{ #2 \right\}}
+\newcommand{\norm}[1]{\left| #1 \right|}
+
+% probability
+\newcommand{\logit}[1]{\text{logit}\left( #1 \right)}
+\newcommand{\prob}[1]{\mathbb{P} \left( #1 \right)}
+\newcommand{\bern}[1]{\mathrm{Bernoulli} \left( #1 \right)}
+\newcommand{\likelihood}[1]{\mathcal{L} \left( #1 \right)}
+\newcommand{\clikelihood}[2]{\mathcal{L} \left( #1 | #2 \right)}
+
+% limits
+\newcommand{\Lim}[3]{\underset{#1 \to #2}{\text{lim}} #3}
+
+% code blocks
+\usepackage{listings}
+\usepackage{inconsolata}
+\usepackage{xparse}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{code_block}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\linespread{1}\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=true,
+    tabsize=4
+}
+
+\lstset{style=code_block}
+
+\newcommand{\inlinecode}[2]{\lstinline[language=#1]$#2$}
+\newcommand{\inlinecodettt}{\texttt}

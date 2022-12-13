@@ -1,0 +1,50 @@
+\def\arraystretch{1}
+\begin{table*}[!tp]
+
+\small
+\colorbox{gray!20}{
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{c}
+        \toprule
+    \begin{tabular*}{\textwidth}{lc}
+        \textbf{Dep. Variable:} &     target      \\
+        \textbf{Method:}        &      dydx       \\
+        \textbf{At:}            &    overall      \\
+    \end{tabular*} \\
+        \bottomrule
+
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} rrrrrr}
+     \textbf{}      & \textbf{dy/dx} & \textbf{std err} & \textbf{z} & \textbf{P$> |$z$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+\midrule
+
+\textbf{age}                               &       0.0033   &        0.002     &     2.109  &         0.035        &        0.000    &        0.006     \\
+\textbf{sex}                               &      -0.1986   &        0.035     &    -5.658  &         0.000        &       -0.267    &       -0.130     \\
+\textbf{resting blood pressure}            &      -0.0022   &        0.001     &    -2.915  &         0.004        &       -0.004    &       -0.001     \\
+\textbf{serum cholesterol}                 &      -0.0013   &        0.000     &    -4.070  &         0.000        &       -0.002    &       -0.001     \\
+\textbf{fasting blood sugar $>$ 120 mg/dl} &       0.0257   &        0.039     &     0.662  &         0.508        &       -0.050    &        0.102     \\
+\textbf{maximum heart rate achieved}       &       0.0021   &        0.001     &     3.038  &         0.002        &        0.001    &        0.004     \\
+\textbf{exercise induced angina}           &      -0.0431   &        0.028     &    -1.533  &         0.125        &       -0.098    &        0.012     \\
+\textbf{oldpeak}                           &      -0.0500   &        0.015     &    -3.324  &         0.001        &       -0.079    &       -0.021     \\
+\textbf{chest pain = 1}                    &       0.0863   &        0.036     &     2.378  &         0.017        &        0.015    &        0.157     \\
+\textbf{chest pain = 2}                    &       0.1657   &        0.031     &     5.338  &         0.000        &        0.105    &        0.227     \\
+\textbf{chest pain = 3}                    &       0.2132   &        0.041     &     5.210  &         0.000        &        0.133    &        0.293     \\
+\textbf{resting electrocardiograph = 1}    &       0.0110   &        0.025     &     0.434  &         0.664        &       -0.039    &        0.060     \\
+\textbf{resting electrocardiograph = 2}    &      -0.0857   &        0.284     &    -0.301  &         0.763        &       -0.643    &        0.472     \\
+\textbf{slope = 1}                         &      -0.0602   &        0.054     &    -1.122  &         0.262        &       -0.166    &        0.045     \\
+\textbf{slope = 2}                         &       0.0710   &        0.058     &     1.229  &         0.219        &       -0.042    &        0.184     \\
+\textbf{major vessels colored = 1}         &      -0.2130   &        0.030     &    -7.037  &         0.000        &       -0.272    &       -0.154     \\
+\textbf{major vessels colored = 2}         &      -0.2949   &        0.043     &    -6.804  &         0.000        &       -0.380    &       -0.210     \\
+\textbf{major vessels colored = 3}         &      -0.2043   &        0.059     &    -3.447  &         0.001        &       -0.320    &       -0.088     \\
+\textbf{major vessels colored = 4}         &       0.1060   &        0.107     &     0.991  &         0.322        &       -0.104    &        0.316     \\
+\textbf{thalassemia = 1}                   &       0.3661   &        0.172     &     2.124  &         0.034        &        0.028    &        0.704     \\
+\textbf{thalassemia = 2}                   &       0.3470   &        0.172     &     2.022  &         0.043        &        0.011    &        0.683     \\
+\textbf{thalassemia = 3}                   &       0.2312   &        0.174     &     1.331  &         0.183        &       -0.109    &        0.572     \\
+
+\end{tabular*} \\
+    \bottomrule
+\end{tabular}
+}
+}
+
+\caption{Marginal Effects}\label{tab:marginal}
+\end{table*}
